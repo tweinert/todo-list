@@ -1,19 +1,7 @@
 export default class Task {
-    constuctor(name, dueDate = 'No date', description = '') {
+    constructor(name, dueDate = 'No date', description = '') {
         this.name = name;
         this.dueDate = dueDate;
-        this.description = description;
-    }
-
-    setName(name) {
-        this.name = name;
-    }
-
-    setDueDate(dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    setDescription(description) {
         this.description = description;
     }
 
@@ -27,5 +15,17 @@ export default class Task {
 
     getDescription() {
         return this.description;
+    }
+
+    setName(name) {
+        this.name = name;
+    }
+
+    setDueDate(dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    setDescription(description) {
+        this.description = description;
     }
 }
