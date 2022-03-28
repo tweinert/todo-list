@@ -1,3 +1,6 @@
+import Project from './project';
+import Task from './task';
+
 function displaySidebar() {
     const sidebarDiv = document.createElement("div");
     sidebarDiv.classList.add("sidebar");
@@ -13,9 +16,65 @@ function displaySidebar() {
     return sidebarDiv;
 }
 
-function displayProject() {
+function displayProject(project) {
     const projectDiv = document.createElement("div");
     projectDiv.classList.add("project");
+
+    const priorityLowDiv = displayPriority(0);
+    const priorityMedDiv = displayPriority(1);
+    const priorityHighDiv = displayPriority(2);
+
+    // get list of tasks in project
+    const projectTasks = project.getTasks();
+
+    // for each task in project: check priority
+    for (const element of projectTasks) {
+        let taskPriority = element.getPriority();
+        if (taskPriority == 0) {
+            // display low priority tasks
+            priorityLowDiv.appendChild(displayTask(element));
+        } else if (taskPriority == 1) {
+            // display medium priority tasks
+            priorityMedDiv.appendChild(displayTask(element));
+        } else if (taskPriority == 2) {
+            // display high priority tasks
+            priorityHighDiv.appendChild(displayTask(element));
+        }
+    }
+    
+    projectDiv.appendChild(priorityLowDiv);
+    projectDiv.appendChild(priorityMedDiv);
+    projectDiv.appendChild(priorityHighDiv);
+
+    return projectDiv;
+}
+
+function displayPriority(priority) {
+    const priorityDiv = document.createElement("div");
+    priorityDiv.classList.add("priority");
+    priorityDiv.setAttribute("id", priority);
+
+    return priorityDiv;
+}
+
+function displayTask(task) {
+    const taskDiv = document.createElement("div");
+    taskDiv.classList.add("task");
+    
+    const taskName = document.createElement("h3");
+    taskName.textContent = task.getName();
+
+    const taskDueDate = document.createElement("p");
+    taskDueDate.textContent = task.getDueDate();
+
+    const taskDescription = document.createElement("p");
+    taskDescription.textContent = task.getDescription();
+
+    taskDiv.appendChild(taskName);
+    taskDiv.appendChild(taskDueDate);
+    taskDiv.appendChild(taskDescription);
+
+    return taskDiv;
 }
 
 function displayMain() {
@@ -25,10 +84,21 @@ function displayMain() {
     return main;
 }
 
+// this shouldnt be here, just for testing for now
+function createDefaultProject() {
+    const defaultProject = new Project("default");
+    const defaultTask = new Task("default");
+
+    defaultProject.addTask(defaultTask);
+
+    return defaultProject;
+}
+
 function initializeWebsite() {
     const content = document.getElementById("content");
 
     content.appendChild(displaySidebar());
+    content.appendChild(displayProject(createDefaultProject()));
 }
 
 export default initializeWebsite;
