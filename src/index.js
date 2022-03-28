@@ -1,4 +1,3 @@
-import Project from './project';
-import Task from './task';
+import initializeWebsite from './UI';
 
-console.log("this should be visible");
+initializeWebsite();

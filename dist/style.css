@@ -1,0 +1,12 @@
+/* Sidebar with projects listed */
+.sidebar {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border-right: 2px solid;
+    overflow-x: hidden;
+    padding-top: 20px;
+}  
