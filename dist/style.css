@@ -1,21 +1,23 @@
 html {
-
+    background-color: lightgrey;
+    height: 100%;
 }
 
 body {
-
+    height: 100%;
 }
 
 .content {
+    height: 100%;
     display: flex;
     flex-flow: nowrap;
-    background-color: dodgerblue;
+    background-color: grey;
 }
 
 /* Sidebar with projects listed */
 .sidebar {
     border-right: 2px solid;
-    background: grey;
+    background: slategrey;
 
     width: 200px;
     
@@ -28,9 +30,17 @@ body {
 
 /* Project with 3 Priority sections */
 .project {
-    
+    display: flex;
+    flex-flow: row nowrap;
+    flex-basis: 1;
+    justify-content: space-around;
 }
 
 .priority {
+    border: 2px solid black;
+    flex: 1;
+}
 
+.task {
+    border-bottom: 1px solid black;
 }
