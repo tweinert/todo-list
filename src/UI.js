@@ -42,9 +42,9 @@ function displayProject(project) {
         }
     }
     
-    projectDiv.appendChild(priorityLowDiv);
-    projectDiv.appendChild(priorityMedDiv);
     projectDiv.appendChild(priorityHighDiv);
+    projectDiv.appendChild(priorityMedDiv);
+    projectDiv.appendChild(priorityLowDiv);
 
     return projectDiv;
 }
@@ -53,6 +53,24 @@ function displayPriority(priority) {
     const priorityDiv = document.createElement("div");
     priorityDiv.classList.add("priority");
     priorityDiv.setAttribute("id", priority);
+
+    if (priority == 0) {
+        // display low priority
+        const priorityHeader = document.createElement("h3");
+        priorityHeader.textContent = "Low Priority";
+        priorityDiv.appendChild(priorityHeader);
+    } else if (priority == 1) {
+        // display medium priority
+        const priorityHeader = document.createElement("h3");
+        priorityHeader.textContent = "Medium Priority";
+        priorityDiv.appendChild(priorityHeader);
+        
+    } else if (priority == 2) {
+        // display high priority
+        const priorityHeader = document.createElement("h3");
+        priorityHeader.textContent = "High Priority";
+        priorityDiv.appendChild(priorityHeader);
+    }
 
     return priorityDiv;
 }

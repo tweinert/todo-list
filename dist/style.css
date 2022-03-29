@@ -41,6 +41,11 @@ body {
     flex: 1;
 }
 
+.priority > h3 {
+    border-bottom: 3px solid black;
+    padding-bottom: 20px;
+}
+
 .task {
     border-bottom: 1px solid black;
 }
