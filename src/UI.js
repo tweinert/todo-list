@@ -10,9 +10,13 @@ function displaySidebar() {
     
     for (let i = 0; i < savedProjects.length; i++) {
         const projectBtn = document.createElement("button");
+
         projectBtn.classList.add("sidebarBtn");
+        projectBtn.setAttribute("id", savedProjects[i].getName());
+
         projectBtn.textContent = savedProjects[i].getName();
         sidebarDiv.appendChild(projectBtn);
+
     }
 
     const newProjectBtn = document.createElement("button");
