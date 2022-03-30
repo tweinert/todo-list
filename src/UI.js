@@ -1,11 +1,19 @@
 import { createProject, deleteProject, createDefaultProject } from './projectFunctions';
-
-import Project from './project';
-import Task from './task';
+import { getSavedProjects } from './storage';
 
 function displaySidebar() {
     const sidebarDiv = document.createElement("div");
     sidebarDiv.classList.add("sidebar");
+
+    // display projects
+    const savedProjects = getSavedProjects();
+    
+    for (let i = 0; i < savedProjects.length; i++) {
+        const projectBtn = document.createElement("button");
+        projectBtn.classList.add("sidebarBtn");
+        projectBtn.textContent = savedProjects[i].getName();
+        sidebarDiv.appendChild(projectBtn);
+    }
 
     const newProjectBtn = document.createElement("button");
     newProjectBtn.classList.add("sidebarBtn");
@@ -108,9 +116,10 @@ function displayMain() {
 function initializeWebsite() {
     const content = document.getElementById("content");
 
+    const defProj = createDefaultProject();
     content.appendChild(displaySidebar());
     // default project
-    content.appendChild(displayProject(createDefaultProject()));
+    content.appendChild(displayProject(defProj));
 }
 
 export default initializeWebsite;

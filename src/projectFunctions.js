@@ -1,8 +1,11 @@
 import Project from "./project";
 import Task from "./task";
+import { saveProject } from "./storage";
 
 function createProject(name) {
     const project = new Project(name);
+
+    saveProject(project);
 
     return project;
 }
@@ -19,6 +22,8 @@ function createDefaultProject() {
     defaultProject.addTask(defaultTask2);
     defaultProject.addTask(defaultTask3);
     defaultProject.addTask(defaultTask4);
+
+    saveProject(defaultProject);
 
     return defaultProject;
 }
