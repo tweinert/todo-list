@@ -1,6 +1,6 @@
 import Project from "./project";
 import Task from "./task";
-import { saveProject } from "./storage";
+import { saveProject, deleteProjectStorage } from "./storage";
 
 function createProject(name) {
     const project = new Project(name);
@@ -28,8 +28,9 @@ function createDefaultProject() {
     return defaultProject;
 }
 
-function deleteProject(project) {
-    // need local storage
+function deleteProject(projectName) {
+    // TODO ensure that this isnt default project
+    deleteProjectStorage(projectName);
 }
 
 export { createProject, deleteProject, createDefaultProject }

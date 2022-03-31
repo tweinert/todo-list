@@ -53,4 +53,8 @@ function getSavedProjects() {
     return projects;
 }
 
-export { saveProject, getSavedProjects}
+function deleteProjectStorage(projectName) {
+    localStorage.removeItem(projectName);
+}
+
+export { saveProject, getSavedProjects, deleteProjectStorage }

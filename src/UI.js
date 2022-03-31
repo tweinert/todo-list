@@ -40,6 +40,11 @@ function displaySidebar() {
 
         deleteBtn.textContent = "X";
 
+        deleteBtn.addEventListener("click", (e) => {
+            deleteProject(savedProjects[i].getName());
+            displayWebsite(savedProjects[0]);
+        });
+
         btnDiv.appendChild(projectBtn);
         btnDiv.appendChild(deleteBtn);
         sidebarDiv.appendChild(btnDiv);
@@ -54,6 +59,8 @@ function displaySidebar() {
     // event listener to create a new project on click
     newProjectBtn.addEventListener("click", function() {
         createProject(prompt("Enter project name:"));
+        // TODO display newly created project
+        displayWebsite(savedProjects[0]);
     });
 
     // delete project button
@@ -158,6 +165,9 @@ function displayTask(task) {
 }
 
 function displayWebsite(project) {
+    // if project not given, use previous project
+    
+
     const content = document.getElementById("content");
 
     content.appendChild(displaySidebar());
@@ -165,12 +175,9 @@ function displayWebsite(project) {
 }
 
 function initializeWebsite() {
-    const content = document.getElementById("content");
-
     const defProj = createDefaultProject();
-    content.appendChild(displaySidebar());
-    // default project
-    content.appendChild(displayProject(defProj));
+
+    displayWebsite(defProj);
 }
 
 export default initializeWebsite;
