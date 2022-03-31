@@ -2,8 +2,13 @@ import { createProject, deleteProject, createDefaultProject } from './projectFun
 import { getSavedProjects } from './storage';
 
 function displaySidebar() {
+    if (document.getElementById("sidebar")) {
+        document.getElementById("sidebar").remove();
+    }
+    
     const sidebarDiv = document.createElement("div");
     sidebarDiv.classList.add("sidebar");
+    sidebarDiv.setAttribute("id", "sidebar");
 
     // display projects
     const savedProjects = getSavedProjects();
@@ -19,7 +24,7 @@ function displaySidebar() {
         projectBtn.addEventListener("click", (e) => {
             // TODO set button as active
             // TODO NEEDS TESTING
-            displayProject(savedProjects[i]);
+            displayWebsite(savedProjects[i]);
         });
 
         sidebarDiv.appendChild(projectBtn);
@@ -124,12 +129,11 @@ function displayTask(task) {
     return taskDiv;
 }
 
-// why is this here
-function displayMain() {
-    const main = document.createElement("main");
-    main.classList.add("main");
-    main.setAttribute("id", "main");
-    return main;
+function displayWebsite(project) {
+    const content = document.getElementById("content");
+
+    content.appendChild(displaySidebar());
+    content.appendChild(displayProject(project));
 }
 
 function initializeWebsite() {
