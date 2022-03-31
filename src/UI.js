@@ -7,6 +7,7 @@ function displaySidebar() {
     }
     
     const sidebarDiv = document.createElement("div");
+
     sidebarDiv.classList.add("sidebar");
     sidebarDiv.setAttribute("id", "sidebar");
 
@@ -14,6 +15,12 @@ function displaySidebar() {
     const savedProjects = getSavedProjects();
     
     for (let i = 0; i < savedProjects.length; i++) {
+        // create div for projectBtn and deleteBtn
+        const btnDiv = document.createElement("div");
+
+        btnDiv.classList.add("sidebarBtnDiv");
+
+        // create projectBtn
         const projectBtn = document.createElement("button");
 
         projectBtn.classList.add("sidebarBtn");
@@ -22,23 +29,44 @@ function displaySidebar() {
         projectBtn.textContent = savedProjects[i].getName();
 
         projectBtn.addEventListener("click", (e) => {
-            // TODO set button as active
-            // TODO NEEDS TESTING
             displayWebsite(savedProjects[i]);
         });
 
-        sidebarDiv.appendChild(projectBtn);
+        //create deleteBtn
+        const deleteBtn = document.createElement("button");
+
+        deleteBtn.classList.add("sidebarDeleteBtn");
+        deleteBtn.setAttribute("id", savedProjects[i].getName());
+
+        deleteBtn.textContent = "X";
+
+        btnDiv.appendChild(projectBtn);
+        btnDiv.appendChild(deleteBtn);
+        sidebarDiv.appendChild(btnDiv);
 
     }
 
+    // new project button
     const newProjectBtn = document.createElement("button");
     newProjectBtn.classList.add("sidebarBtn");
     newProjectBtn.textContent = "new project +";
-    // TODO add event listener for createProject()
+
+    // event listener to create a new project on click
     newProjectBtn.addEventListener("click", function() {
         createProject(prompt("Enter project name:"));
     });
-    // maybe use an alert for project details?
+
+    // delete project button
+    const deleteProjectBtn = document.createElement("button");
+    deleteProjectBtn.classList.add("sidebarBtn");
+    deleteProjectBtn.setAttribute("id", "deleteBtn");
+    
+    deleteProjectBtn.textContent = "delete project";
+
+    // event listener to delete current project on click
+    // TODO need a way to know current project name
+
+    
 
     sidebarDiv.appendChild(newProjectBtn);
 
