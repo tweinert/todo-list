@@ -1,4 +1,5 @@
 import Project from './project';
+import Task from './task';
 
 // check if storage is available
 function storageAvailable(type) {
@@ -41,6 +42,10 @@ function getSavedProjects() {
         // reconstruct project object using retrievedObject data
         let proj = new Project();
         Object.assign(proj, JSON.parse(retrievedObject));
+
+        // reconstruct task objects within project object
+        let taskArray = proj.getTasks();
+        proj.reconstructTasks(taskArray);
 
         projects.push(proj);
     }

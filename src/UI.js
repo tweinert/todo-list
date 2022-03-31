@@ -15,6 +15,13 @@ function displaySidebar() {
         projectBtn.setAttribute("id", savedProjects[i].getName());
 
         projectBtn.textContent = savedProjects[i].getName();
+
+        projectBtn.addEventListener("click", (e) => {
+            // TODO set button as active
+            // TODO NEEDS TESTING
+            displayProject(savedProjects[i]);
+        });
+
         sidebarDiv.appendChild(projectBtn);
 
     }
@@ -23,6 +30,9 @@ function displaySidebar() {
     newProjectBtn.classList.add("sidebarBtn");
     newProjectBtn.textContent = "new project +";
     // TODO add event listener for createProject()
+    newProjectBtn.addEventListener("click", function() {
+        createProject(prompt("Enter project name:"));
+    });
     // maybe use an alert for project details?
 
     sidebarDiv.appendChild(newProjectBtn);
@@ -31,8 +41,13 @@ function displaySidebar() {
 }
 
 function displayProject(project) {
+    if (document.getElementById("project")) {
+        document.getElementById("project").remove();
+    }
+
     const projectDiv = document.createElement("div");
     projectDiv.classList.add("project");
+    projectDiv.setAttribute("id", "project");
 
     const priorityLowDiv = displayPriority(0);
     const priorityMedDiv = displayPriority(1);
