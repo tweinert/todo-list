@@ -61,19 +61,7 @@ function displaySidebar() {
         createProject(prompt("Enter project name:"));
         // TODO display newly created project
         displayWebsite(savedProjects[0]);
-    });
-
-    // delete project button
-    const deleteProjectBtn = document.createElement("button");
-    deleteProjectBtn.classList.add("sidebarBtn");
-    deleteProjectBtn.setAttribute("id", "deleteBtn");
-    
-    deleteProjectBtn.textContent = "delete project";
-
-    // event listener to delete current project on click
-    // TODO need a way to know current project name
-
-    
+    }); 
 
     sidebarDiv.appendChild(newProjectBtn);
 

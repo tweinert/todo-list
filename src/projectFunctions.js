@@ -3,6 +3,11 @@ import Task from "./task";
 import { saveProject, deleteProjectStorage } from "./storage";
 
 function createProject(name) {
+    if (name == null || name == "") {
+        alert("Name error");
+        return;
+    }
+    
     const project = new Project(name);
 
     saveProject(project);
@@ -29,7 +34,10 @@ function createDefaultProject() {
 }
 
 function deleteProject(projectName) {
-    // TODO ensure that this isnt default project
+    if (projectName == "default") {
+        alert("Cannot delete default project");
+        return;
+    }
     deleteProjectStorage(projectName);
 }
 
