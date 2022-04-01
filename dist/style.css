@@ -65,6 +65,9 @@ body {
 
 .priorityHeaderDiv > button {
     flex-grow: 1;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 1px solid black;
 }
 
 .task {
