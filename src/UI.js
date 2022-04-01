@@ -113,20 +113,50 @@ function displayPriority(priority) {
 
     if (priority == 0) {
         // display low priority
+        const priorityHeaderDiv = document.createElement("div");
+        priorityHeaderDiv.classList.add("priorityHeaderDiv");
+
         const priorityHeader = document.createElement("h3");
         priorityHeader.textContent = "Low Priority";
-        priorityDiv.appendChild(priorityHeader);
+
+        const createTaskBtn = document.createElement("button");
+        createTaskBtn.textContent = "New Task +";
+
+        priorityHeaderDiv.appendChild(priorityHeader);
+        priorityHeaderDiv.appendChild(createTaskBtn);
+
+        priorityDiv.appendChild(priorityHeaderDiv);
     } else if (priority == 1) {
         // display medium priority
+        const priorityHeaderDiv = document.createElement("div");
+        priorityHeaderDiv.classList.add("priorityHeaderDiv");
+
         const priorityHeader = document.createElement("h3");
         priorityHeader.textContent = "Medium Priority";
-        priorityDiv.appendChild(priorityHeader);
+
+        const createTaskBtn = document.createElement("button");
+        createTaskBtn.textContent = "New Task +";
+
+        priorityHeaderDiv.appendChild(priorityHeader);
+        priorityHeaderDiv.appendChild(createTaskBtn);
+
+        priorityDiv.appendChild(priorityHeaderDiv);
         
     } else if (priority == 2) {
         // display high priority
+        const priorityHeaderDiv = document.createElement("div");
+        priorityHeaderDiv.classList.add("priorityHeaderDiv");
+        
         const priorityHeader = document.createElement("h3");
         priorityHeader.textContent = "High Priority";
-        priorityDiv.appendChild(priorityHeader);
+
+        const createTaskBtn = document.createElement("button");
+        createTaskBtn.textContent = "New Task +";
+
+        priorityHeaderDiv.appendChild(priorityHeader);
+        priorityHeaderDiv.appendChild(createTaskBtn);
+
+        priorityDiv.appendChild(priorityHeaderDiv);
     }
 
     return priorityDiv;
@@ -153,9 +183,6 @@ function displayTask(task) {
 }
 
 function displayWebsite(project) {
-    // if project not given, use previous project
-    
-
     const content = document.getElementById("content");
 
     content.appendChild(displaySidebar());

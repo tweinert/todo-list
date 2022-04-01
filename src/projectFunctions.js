@@ -38,6 +38,7 @@ function deleteProject(projectName) {
         alert("Cannot delete default project");
         return;
     }
+    
     deleteProjectStorage(projectName);
 }
 

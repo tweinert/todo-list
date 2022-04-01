@@ -53,9 +53,18 @@ body {
     flex: 1;
 }
 
-.priority > h3 {
+.priorityHeaderDiv {
+    display: flex;
+    justify-content: space-around;
     border-bottom: 3px solid black;
-    padding-bottom: 20px;
+}
+
+.priorityHeaderDiv > h3 {
+    flex-grow: 1;
+}
+
+.priorityHeaderDiv > button {
+    flex-grow: 1;
 }
 
 .task {
