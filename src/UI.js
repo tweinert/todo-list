@@ -1,6 +1,7 @@
-import { createTask } from './taskFunctions';
+import { createTask, deleteTask } from './taskFunctions';
 import { createProject, deleteProject, createDefaultProject } from './projectFunctions';
 import { getSavedProjects } from './storage';
+import Task from './task';
 
 function displaySidebar() {
     if (document.getElementById("sidebar")) {
@@ -90,13 +91,13 @@ function displayProject(project) {
         let taskPriority = element.getPriority();
         if (taskPriority == 0) {
             // display low priority tasks
-            priorityLowDiv.appendChild(displayTask(element));
+            priorityLowDiv.appendChild(displayTask(project, element));
         } else if (taskPriority == 1) {
             // display medium priority tasks
-            priorityMedDiv.appendChild(displayTask(element));
+            priorityMedDiv.appendChild(displayTask(project, element));
         } else if (taskPriority == 2) {
             // display high priority tasks
-            priorityHighDiv.appendChild(displayTask(element));
+            priorityHighDiv.appendChild(displayTask(project, element));
         }
     }
     
@@ -181,7 +182,7 @@ function displayPriority(priority, project) {
     return priorityDiv;
 }
 
-function displayTask(task) {
+function displayTask(project, task) {
     const taskDiv = document.createElement("div");
     taskDiv.classList.add("task");
     
@@ -194,9 +195,53 @@ function displayTask(task) {
     const taskDescription = document.createElement("p");
     taskDescription.textContent = task.getDescription();
 
+    // drop down to change priority
+    const prioritySelect = document.createElement("select");
+
+    const prioritySelectHigh = document.createElement("option");
+    prioritySelectHigh.textContent = "High";
+    prioritySelectHigh.setAttribute("value", "high");
+
+    const prioritySelectMed = document.createElement("option");
+    prioritySelectMed.textContent = "Medium";
+    prioritySelectMed.setAttribute("value", "medium");
+
+    const prioritySelectLow = document.createElement("option");
+    prioritySelectLow.textContent = "Low";
+    prioritySelectLow.setAttribute("value", "low");
+
+    prioritySelect.appendChild(prioritySelectLow);
+    prioritySelect.appendChild(prioritySelectMed);
+    prioritySelect.appendChild(prioritySelectHigh);
+
+    // set default priority dropdown option to correct priority
+    for (let i = 0; i < prioritySelect.length; i++) {
+        console.log(prioritySelect.options[i].index);
+        if (prioritySelect.options[i].index == task.getPriority()) {
+            prioritySelect.selectedIndex = i;
+        }
+    }
+
+    // event onchange to change priority of task
+    prioritySelect.addEventListener("onchange", (e) => {
+        
+    });
+    
+    // delete task button
+    const taskDeleteBtn = document.createElement("button");
+    taskDeleteBtn.textContent = "Delete Task";
+
+    // delete task function call
+    taskDeleteBtn.addEventListener("click", (e) => {
+        deleteTask(project, task);
+        displayWebsite(project);
+    });
+
     taskDiv.appendChild(taskName);
     taskDiv.appendChild(taskDueDate);
     taskDiv.appendChild(taskDescription);
+    taskDiv.appendChild(prioritySelect);
+    taskDiv.appendChild(taskDeleteBtn);
 
     return taskDiv;
 }

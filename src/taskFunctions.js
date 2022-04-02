@@ -1,5 +1,6 @@
 import Task from "./task";
 import Project from "./project";
+import { saveProject, deleteProjectStorage } from "./storage";
 
 function createTask(priority, project) {
     let name = prompt("Enter task name");
@@ -9,6 +10,14 @@ function createTask(priority, project) {
     const newTask = new Task(name, dueDate, description, priority);
 
     project.addTask(newTask);
+
+    saveProject(project);
 }
 
-export { createTask }
+function deleteTask(project, task) {
+    project.deleteTask(task);
+
+    saveProject(project);
+}
+
+export { createTask, deleteTask }
