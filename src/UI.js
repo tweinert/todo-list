@@ -1,4 +1,4 @@
-import { createTask, deleteTask } from './taskFunctions';
+import { createTask, deleteTask, changePriority } from './taskFunctions';
 import { createProject, deleteProject, createDefaultProject } from './projectFunctions';
 import { getSavedProjects } from './storage';
 import Task from './task';
@@ -216,15 +216,15 @@ function displayTask(project, task) {
 
     // set default priority dropdown option to correct priority
     for (let i = 0; i < prioritySelect.length; i++) {
-        console.log(prioritySelect.options[i].index);
         if (prioritySelect.options[i].index == task.getPriority()) {
             prioritySelect.selectedIndex = i;
         }
     }
 
     // event onchange to change priority of task
-    prioritySelect.addEventListener("onchange", (e) => {
-        
+    prioritySelect.addEventListener("change", (e) => {
+        changePriority(task, prioritySelect.selectedIndex);
+        displayWebsite(project);
     });
     
     // delete task button

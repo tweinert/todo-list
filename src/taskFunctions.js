@@ -20,4 +20,8 @@ function deleteTask(project, task) {
     saveProject(project);
 }
 
-export { createTask, deleteTask }
+function changePriority(task, priority) {
+    task.setPriority(priority);
+}
+
+export { createTask, deleteTask, changePriority }
