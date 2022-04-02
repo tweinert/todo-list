@@ -11,7 +11,7 @@ body {
     height: 100%;
     display: flex;
     flex-flow: nowrap;
-    background-color: grey;
+    background-color: white;
 }
 
 /* Sidebar with projects listed */
@@ -65,7 +65,6 @@ body {
 
 .priorityHeaderDiv > button {
     flex-grow: 1;
-    background-color: transparent;
     background-repeat: no-repeat;
     border: 1px solid black;
 }

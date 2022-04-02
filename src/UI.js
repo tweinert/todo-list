@@ -1,3 +1,4 @@
+import { createTask } from './taskFunctions';
 import { createProject, deleteProject, createDefaultProject } from './projectFunctions';
 import { getSavedProjects } from './storage';
 
@@ -77,9 +78,9 @@ function displayProject(project) {
     projectDiv.classList.add("project");
     projectDiv.setAttribute("id", "project");
 
-    const priorityLowDiv = displayPriority(0);
-    const priorityMedDiv = displayPriority(1);
-    const priorityHighDiv = displayPriority(2);
+    const priorityLowDiv = displayPriority(0, project);
+    const priorityMedDiv = displayPriority(1, project);
+    const priorityHighDiv = displayPriority(2, project);
 
     // get list of tasks in project
     const projectTasks = project.getTasks();
@@ -106,7 +107,7 @@ function displayProject(project) {
     return projectDiv;
 }
 
-function displayPriority(priority) {
+function displayPriority(priority, project) {
     const priorityDiv = document.createElement("div");
     priorityDiv.classList.add("priority");
     priorityDiv.setAttribute("id", priority);
@@ -121,6 +122,12 @@ function displayPriority(priority) {
 
         const createTaskBtn = document.createElement("button");
         createTaskBtn.textContent = "New Task +";
+
+        // new task event listener
+        createTaskBtn.addEventListener("click", (e) => {
+            createTask(priority, project);
+            displayWebsite(project);
+        });
 
         priorityHeaderDiv.appendChild(priorityHeader);
         priorityHeaderDiv.appendChild(createTaskBtn);
