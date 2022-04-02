@@ -144,6 +144,12 @@ function displayPriority(priority, project) {
         const createTaskBtn = document.createElement("button");
         createTaskBtn.textContent = "New Task +";
 
+        // new task event listener
+        createTaskBtn.addEventListener("click", (e) => {
+            createTask(priority, project);
+            displayWebsite(project);
+        });
+
         priorityHeaderDiv.appendChild(priorityHeader);
         priorityHeaderDiv.appendChild(createTaskBtn);
 
@@ -159,6 +165,12 @@ function displayPriority(priority, project) {
 
         const createTaskBtn = document.createElement("button");
         createTaskBtn.textContent = "New Task +";
+
+        // new task event listener
+        createTaskBtn.addEventListener("click", (e) => {
+            createTask(priority, project);
+            displayWebsite(project);
+        });
 
         priorityHeaderDiv.appendChild(priorityHeader);
         priorityHeaderDiv.appendChild(createTaskBtn);
