@@ -44,8 +44,9 @@ body {
 .project {
     display: flex;
     flex-flow: row nowrap;
-    flex-basis: 1;
-    justify-content: space-around;
+    /* flex-basis: 1; */
+    justify-content: flex-end;
+    flex: 0 0 calc(100% - 200px);
 }
 
 .priority {
