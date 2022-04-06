@@ -1,6 +1,5 @@
 import Task from "./Task";
-import Project from "./Project";
-import { saveProject, deleteProjectStorage } from "./storage";
+import { saveProject } from "./storage";
 
 function createTask(priority, project) {
     let name = prompt("Enter task name");

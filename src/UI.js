@@ -29,7 +29,7 @@ function displaySidebar() {
 
         projectBtn.textContent = savedProjects[i].getName();
 
-        projectBtn.addEventListener("click", (e) => {
+        projectBtn.addEventListener("click", () => {
             displayWebsite(savedProjects[i]);
         });
 
@@ -41,7 +41,7 @@ function displaySidebar() {
 
         deleteBtn.textContent = "X";
 
-        deleteBtn.addEventListener("click", (e) => {
+        deleteBtn.addEventListener("click", () => {
             deleteProject(savedProjects[i].getName());
             displayWebsite(savedProjects[0]);
         });
@@ -124,7 +124,7 @@ function displayPriority(priority, project) {
         createTaskBtn.textContent = "New Task +";
 
         // new task event listener
-        createTaskBtn.addEventListener("click", (e) => {
+        createTaskBtn.addEventListener("click", () => {
             createTask(priority, project);
             displayWebsite(project);
         });
@@ -145,7 +145,7 @@ function displayPriority(priority, project) {
         createTaskBtn.textContent = "New Task +";
 
         // new task event listener
-        createTaskBtn.addEventListener("click", (e) => {
+        createTaskBtn.addEventListener("click", () => {
             createTask(priority, project);
             displayWebsite(project);
         });
@@ -167,7 +167,7 @@ function displayPriority(priority, project) {
         createTaskBtn.textContent = "New Task +";
 
         // new task event listener
-        createTaskBtn.addEventListener("click", (e) => {
+        createTaskBtn.addEventListener("click", () => {
             createTask(priority, project);
             displayWebsite(project);
         });
@@ -221,7 +221,7 @@ function displayTask(project, task) {
     }
 
     // event onchange to change priority of task
-    prioritySelect.addEventListener("change", (e) => {
+    prioritySelect.addEventListener("change", () => {
         changePriority(task, prioritySelect.selectedIndex);
         displayWebsite(project);
     });
@@ -231,7 +231,7 @@ function displayTask(project, task) {
     taskDeleteBtn.textContent = "Delete Task";
 
     // delete task function call
-    taskDeleteBtn.addEventListener("click", (e) => {
+    taskDeleteBtn.addEventListener("click", () => {
         deleteTask(project, task);
         displayWebsite(project);
     });
