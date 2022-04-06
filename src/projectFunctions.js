@@ -1,5 +1,5 @@
-import Project from "./project";
-import Task from "./task";
+import Project from "./Project";
+import Task from "./Task";
 import { saveProject, deleteProjectStorage } from "./storage";
 
 function createProject(name) {

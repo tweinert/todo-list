@@ -1,7 +1,6 @@
 import { createTask, deleteTask, changePriority } from './taskFunctions';
 import { createProject, deleteProject, createDefaultProject } from './projectFunctions';
 import { getSavedProjects } from './storage';
-import Task from './task';
 
 function displaySidebar() {
     if (document.getElementById("sidebar")) {
