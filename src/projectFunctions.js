@@ -1,6 +1,6 @@
 import Project from "./Project";
 import Task from "./Task";
-import { saveProject, deleteProjectStorage } from "./storage";
+import { saveProject, deleteProjectStorage, fbSaveProject } from "./storage";
 
 function createProject(name) {
     if (name == null || name == "") {
@@ -11,6 +11,7 @@ function createProject(name) {
     const project = new Project(name);
 
     saveProject(project);
+    fbSaveProject(project);
 
     return project;
 }
